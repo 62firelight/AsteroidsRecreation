@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float launchSpeed = 2.0f;
+    public float launchSpeed = 150.0f;
 
-    public float turnSpeed = 5.0f;
+    public float turnSpeed = 2.0f;
 
     private Rigidbody2D rb;
 
