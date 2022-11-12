@@ -697,6 +697,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3008711978509596814, guid: 783fb446cce6dca418c1c42139cf5749, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 783fb446cce6dca418c1c42139cf5749, type: 3}
 --- !u!1001 &5170038991802214570
@@ -771,17 +775,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Asteroid
       objectReference: {fileID: 0}
+    - target: {fileID: 7358679342105851168, guid: 9e5f13af3aac86b45ab958bbf91460fb, type: 3}
+      propertyPath: m_TagString
+      value: Asteroid
+      objectReference: {fileID: 0}
     - target: {fileID: 7358679342105851197, guid: 9e5f13af3aac86b45ab958bbf91460fb, type: 3}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7358679342105851197, guid: 9e5f13af3aac86b45ab958bbf91460fb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.1723518
+      value: 5.54
       objectReference: {fileID: 0}
     - target: {fileID: 7358679342105851197, guid: 9e5f13af3aac86b45ab958bbf91460fb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9086076
+      value: -3.91
       objectReference: {fileID: 0}
     - target: {fileID: 7358679342105851197, guid: 9e5f13af3aac86b45ab958bbf91460fb, type: 3}
       propertyPath: m_LocalPosition.z
