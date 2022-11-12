@@ -22,13 +22,23 @@ public class Asteroid : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
+        Physics2D.IgnoreLayerCollision(3, 3, true);
+
         floatSpeed = Random.Range(40, 50);
 
-        // Hurtle towards center of screen
-        Vector2 centerDirection = new Vector2(0 - transform.position.x, 0 - transform.position.y);
-        centerDirection.Normalize();
-        rb.AddForce(centerDirection * floatSpeed);
-        // TODO: Add more variety to all the possible initial directions
+        // get coordinates for bottom-left point and top-right point of screen
+        Vector2 bottomLeftPoint = Camera.main.ScreenToWorldPoint(Vector3.zero);
+        Vector2 topRightPoint = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, 0));
+
+        // get a random point on the diagonal line between the two points above
+        Vector2 randomPointOnDiagonal = new Vector2(Random.Range(bottomLeftPoint.x, topRightPoint.x), Random.Range(bottomLeftPoint.y, topRightPoint.y)); 
+
+        // get a random direction vector pointing towards the random point, then normalize it
+        Vector2 randomDirection = new Vector2(randomPointOnDiagonal.x - transform.position.x, randomPointOnDiagonal.y - transform.position.y);
+        randomDirection.Normalize();
+        
+        // hurtle towards the random point we have selected
+        rb.AddForce(randomDirection * floatSpeed);
     }
 
     void OnCollisionEnter2D(Collision2D other) 
@@ -57,8 +67,6 @@ public class Asteroid : MonoBehaviour
             randomDirection.Normalize();
             secondAsteroid.GetComponent<Rigidbody2D>().AddForce(randomDirection * floatSpeed);
             secondAsteroid.GetComponent<Asteroid>().SetIsChild(true);
-
-            Physics2D.IgnoreCollision(firstAsteroid.GetComponent<Collider2D>(), secondAsteroid.GetComponent<Collider2D>());
         }
 
         Destroy(gameObject);
