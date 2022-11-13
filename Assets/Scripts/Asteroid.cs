@@ -22,7 +22,9 @@ public class Asteroid : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
+        // Ignore collisions for asteroid and boundary layer
         Physics2D.IgnoreLayerCollision(3, 3, true);
+        Physics2D.IgnoreLayerCollision(3, 6, true);
 
         floatSpeed = Random.Range(40, 50);
 
