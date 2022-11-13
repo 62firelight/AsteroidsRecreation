@@ -26,18 +26,18 @@ public class Asteroid : MonoBehaviour
 
         floatSpeed = Random.Range(40, 50);
 
-        // get coordinates for bottom-left point and top-right point of screen
+        // Get coordinates for bottom-left point and top-right point of screen
         Vector2 bottomLeftPoint = Camera.main.ScreenToWorldPoint(Vector3.zero);
         Vector2 topRightPoint = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, 0));
 
-        // get a random point on the diagonal line between the two points above
+        // Get a random point on the diagonal line between the two points above
         Vector2 randomPointOnDiagonal = new Vector2(Random.Range(bottomLeftPoint.x, topRightPoint.x), Random.Range(bottomLeftPoint.y, topRightPoint.y)); 
 
-        // get a random direction vector pointing towards the random point, then normalize it
+        // Get a random direction vector pointing towards the random point, then normalize it
         Vector2 randomDirection = new Vector2(randomPointOnDiagonal.x - transform.position.x, randomPointOnDiagonal.y - transform.position.y);
         randomDirection.Normalize();
         
-        // hurtle towards the random point we have selected
+        // Hurtle towards the random point we have selected
         rb.AddForce(randomDirection * floatSpeed);
     }
 
