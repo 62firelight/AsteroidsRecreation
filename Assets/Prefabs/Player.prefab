@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchSpeed: 150
-  turnSpeed: 1.5
+  turnSpeed: 0.85
 --- !u!114 &1864317529
 MonoBehaviour:
   m_ObjectHideFlags: 0
