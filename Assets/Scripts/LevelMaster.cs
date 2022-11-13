@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelMaster : MonoBehaviour
 {
@@ -41,6 +42,10 @@ public class LevelMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // Whenever R is pressed, restart the current scene
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
