@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 3008711978509596814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.2447, y: -0.077, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 848594056}
   m_Father: {fileID: 0}
@@ -129,8 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96f82060704b9d4884e9a7adb31d12b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchSpeed: 150
-  turnSpeed: 0.85
+  launchSpeed: 200
+  turnSpeed: 100
 --- !u!114 &1864317529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,8 +160,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1.25
-  m_AngularDrag: 4
+  m_LinearDrag: 1
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0

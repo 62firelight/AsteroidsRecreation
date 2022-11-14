@@ -44,6 +44,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         float directionInput = Input.GetAxis("Horizontal");
-        rb.AddTorque(-directionInput * turnSpeed);
+
+        if (directionInput != 0)
+        {
+            rb.angularVelocity = -directionInput * turnSpeed;
+        }
     }
 }
