@@ -55,7 +55,7 @@ public class Asteroid : MonoBehaviour
             Vector2 randomDirection;
 
             Transform firstAsteroid = Instantiate(asteroidPrefab);
-            firstAsteroid.rotation = new Quaternion(firstAsteroid.rotation.x, firstAsteroid.rotation.y, Random.Range(0.0f, 360.0f), firstAsteroid.rotation.w);
+            firstAsteroid.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
             firstAsteroid.localScale /= 2.0f;
             randomDirection = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
             randomDirection.Normalize();
@@ -63,7 +63,7 @@ public class Asteroid : MonoBehaviour
             firstAsteroid.GetComponent<Asteroid>().SetIsChild(true);
 
             Transform secondAsteroid = Instantiate(asteroidPrefab);
-            secondAsteroid.rotation = new Quaternion(secondAsteroid.rotation.x, secondAsteroid.rotation.y, Random.Range(0.0f, 360.0f), secondAsteroid.rotation.w);
+            secondAsteroid.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
             secondAsteroid.localScale /= 2.0f;
             randomDirection = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
             randomDirection.Normalize();
