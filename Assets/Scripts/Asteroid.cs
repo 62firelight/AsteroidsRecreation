@@ -13,7 +13,7 @@ public class Asteroid : MonoBehaviour
 
     private int floatSpeed = 50;
 
-    private bool isChild = false;
+    private int timesSplit = 0;
 
     private Rigidbody2D rb;
 
@@ -50,32 +50,25 @@ public class Asteroid : MonoBehaviour
             return;
         }
 
-        if (!isChild)   
+        if (timesSplit < 2)   
         {
-            Vector2 randomDirection;
-
+            // Split into two asteroids
             Transform firstAsteroid = Instantiate(asteroidPrefab);
             firstAsteroid.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
             firstAsteroid.localScale /= 2.0f;
-            randomDirection = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
-            randomDirection.Normalize();
-            firstAsteroid.GetComponent<Rigidbody2D>().AddForce(randomDirection * floatSpeed);
-            firstAsteroid.GetComponent<Asteroid>().SetIsChild(true);
+            firstAsteroid.GetComponent<Asteroid>().SetTimesSplit(timesSplit + 1);
 
             Transform secondAsteroid = Instantiate(asteroidPrefab);
             secondAsteroid.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
             secondAsteroid.localScale /= 2.0f;
-            randomDirection = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
-            randomDirection.Normalize();
-            secondAsteroid.GetComponent<Rigidbody2D>().AddForce(randomDirection * floatSpeed);
-            secondAsteroid.GetComponent<Asteroid>().SetIsChild(true);
+            secondAsteroid.GetComponent<Asteroid>().SetTimesSplit(timesSplit + 1);
         }
 
         Destroy(gameObject);
     }
 
-    public void SetIsChild(bool state)
+    public void SetTimesSplit(int timesSplit)
     {
-        isChild = state;
+        this.timesSplit = timesSplit;
     }
 }
