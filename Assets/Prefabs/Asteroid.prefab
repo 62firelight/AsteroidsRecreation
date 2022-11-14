@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7358679342105851197}
   - component: {fileID: 7358679342105851198}
   - component: {fileID: 7358679342105851196}
-  - component: {fileID: 2646001784401233693}
   - component: {fileID: 647151795824904284}
   - component: {fileID: 7358679342105851199}
+  - component: {fileID: -6785947608789412505}
   m_Layer: 3
   m_Name: Asteroid
   m_TagString: Asteroid
@@ -101,18 +101,6 @@ MonoBehaviour:
   asteroidPrefab: {fileID: 7358679342105851197}
   minFloatSpeed: 40
   maxFloatSpeed: 50
---- !u!114 &2646001784401233693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7358679342105851168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 255e5ef369988e947acf4e915b44ed07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &647151795824904284
 Rigidbody2D:
   serializedVersion: 4
@@ -211,3 +199,15 @@ PolygonCollider2D:
       - {x: 0.32, y: -0.47}
       - {x: 0.29999998, y: -0.52}
       - {x: 0.22999999, y: -0.51}
+--- !u!114 &-6785947608789412505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358679342105851168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 650fddee85c45494a8eaf4a898b91559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
