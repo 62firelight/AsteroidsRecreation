@@ -33,38 +33,72 @@ public class Asteroid : MonoBehaviour
         Vector2 topRightPoint = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, Camera.main.pixelHeight, 0));
 
         // Get a random point on the diagonal line between the two points above
-        Vector2 randomPointOnDiagonal = new Vector2(Random.Range(bottomLeftPoint.x, topRightPoint.x), Random.Range(bottomLeftPoint.y, topRightPoint.y)); 
+        Vector2 randomPointOnDiagonal = new Vector2(Random.Range(bottomLeftPoint.x, topRightPoint.x), Random.Range(bottomLeftPoint.y, topRightPoint.y));
 
         // Get a random direction vector pointing towards the random point, then normalize it
         Vector2 randomDirection = new Vector2(randomPointOnDiagonal.x - transform.position.x, randomPointOnDiagonal.y - transform.position.y);
         randomDirection.Normalize();
-        
+
         // Hurtle towards the random point we have selected
         rb.AddForce(randomDirection * floatSpeed);
     }
 
-    void OnCollisionEnter2D(Collision2D other) 
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag == "Asteroid")
         {
             return;
         }
 
-        if (timesSplit < 2)   
+        if (timesSplit <= 2)
         {
-            // Split into two asteroids
-            Transform firstAsteroid = Instantiate(asteroidPrefab);
-            firstAsteroid.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
-            firstAsteroid.localScale /= 2.0f;
-            firstAsteroid.GetComponent<Asteroid>().SetTimesSplit(timesSplit + 1);
+            IncreaseScore();
 
-            Transform secondAsteroid = Instantiate(asteroidPrefab);
-            secondAsteroid.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
-            secondAsteroid.localScale /= 2.0f;
-            secondAsteroid.GetComponent<Asteroid>().SetTimesSplit(timesSplit + 1);
+            if (timesSplit < 2)
+            {
+                Split();
+            }
         }
 
         Destroy(gameObject);
+    }
+
+    void IncreaseScore()
+    {
+        // Calculate score to add based on asteroid size
+        // Smaller asteroids give higher score
+        // Specifically:
+        // -- Big Asteroid: +20
+        // -- Medium Asteroid: +50
+        // -- Small Asteroid: +100
+        switch (timesSplit)
+        {
+            case 0:
+                GameMaster.score += 20;
+                break;
+            case 1:
+                GameMaster.score += 50;
+                break;
+            case 2:
+                GameMaster.score += 100;
+                break;
+            default:
+                break;
+        }
+    }
+
+    void Split()
+    {
+        // Split into two asteroids
+        Transform firstAsteroid = Instantiate(asteroidPrefab);
+        firstAsteroid.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
+        firstAsteroid.localScale /= 2.0f;
+        firstAsteroid.GetComponent<Asteroid>().SetTimesSplit(timesSplit + 1);
+
+        Transform secondAsteroid = Instantiate(asteroidPrefab);
+        secondAsteroid.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
+        secondAsteroid.localScale /= 2.0f;
+        secondAsteroid.GetComponent<Asteroid>().SetTimesSplit(timesSplit + 1);
     }
 
     public void SetTimesSplit(int timesSplit)

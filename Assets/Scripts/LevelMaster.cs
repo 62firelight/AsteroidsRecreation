@@ -48,4 +48,10 @@ public class LevelMaster : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+
+    void OnGUI()
+    {
+        GUI.skin.label.alignment = TextAnchor.UpperCenter;
+        GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), "Score: " + GameMaster.score);
+    }
 }
