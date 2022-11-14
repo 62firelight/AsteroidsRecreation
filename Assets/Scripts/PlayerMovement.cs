@@ -38,13 +38,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W))
+        float forwardInput = Input.GetAxis("Vertical");
+        if (forwardInput > 0)
         {
             rb.AddForce(transform.up * launchSpeed * Time.fixedDeltaTime);
         }
 
         float directionInput = Input.GetAxis("Horizontal");
-
         if (directionInput != 0)
         {
             rb.angularVelocity = -directionInput * turnSpeed;
