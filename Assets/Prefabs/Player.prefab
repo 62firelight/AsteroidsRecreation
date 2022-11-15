@@ -42,6 +42,8 @@ GameObject:
   - component: {fileID: 3008711978509596812}
   - component: {fileID: 3008711978509596815}
   - component: {fileID: 1864317529}
+  - component: {fileID: 5941182590994734227}
+  - component: {fileID: 1893651811}
   - component: {fileID: 3008711978509596810}
   - component: {fileID: 3538520690003204162}
   m_Layer: 0
@@ -130,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchSpeed: 200
-  turnSpeed: 100
+  turnSpeed: 175
 --- !u!114 &1864317529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +149,31 @@ MonoBehaviour:
   shootKey: 32
   projectilePrefab: {fileID: 4393470934018861164, guid: 259e419a904ebf747861cb92a14c76fb, type: 3}
   projectileSpeed: 10
+--- !u!114 &5941182590994734227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3008711978509596814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae2b3e4733104b43a09b152435c3018, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultRespawnCooldown: 1.5
+--- !u!114 &1893651811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3008711978509596814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 650fddee85c45494a8eaf4a898b91559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &3008711978509596810
 Rigidbody2D:
   serializedVersion: 4

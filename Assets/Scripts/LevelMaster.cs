@@ -73,12 +73,20 @@ public class LevelMaster : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameMaster.Reset();
         }
     }
 
     void OnGUI()
     {
         GUI.skin.label.alignment = TextAnchor.UpperCenter;
-        GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), "Score: " + GameMaster.score);
+        if (GameMaster.playerLives > 0)
+        {
+            GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), "Score: " + GameMaster.score + ", Lives: " + GameMaster.playerLives);
+        }
+        else
+        {
+            GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), "Game Over");
+        }
     }
 }
