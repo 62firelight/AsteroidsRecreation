@@ -44,7 +44,7 @@ public class LevelMaster : MonoBehaviour
             Vector2 randomPos = new Vector2(Random.Range(firstPos.x, secondPos.x), Random.Range(firstPos.y, secondPos.y));
 
             // Add small offset to create variety in random positions
-            randomPos += new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f));
+            randomPos += new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
 
             Instantiate(asteroidPrefab, randomPos, transform.rotation);
         }
