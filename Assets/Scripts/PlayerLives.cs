@@ -10,7 +10,9 @@ public class PlayerLives : MonoBehaviour
 {
     public float defaultRespawnCooldown = 1.5f;
 
-    public SpawnProtection spawnProtection;
+    private Transform spawnLocation;
+
+    private SpawnProtection spawnProtection;
 
     private SpriteRenderer sr;
 
@@ -29,6 +31,23 @@ public class PlayerLives : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
         playerMovement = GetComponent<PlayerMovement>();
+
+        // Create a temporary box collider that auto calculates the player size
+        BoxCollider2D tempCollider = gameObject.AddComponent<BoxCollider2D>();
+        Vector2 playerSize = tempCollider.size;
+
+        // Create an empty game object that acts as the player's spawn location
+        GameObject spawnLocationObj = new GameObject("SpawnLocation");
+        spawnLocation = spawnLocationObj.transform;
+
+        // Add relevant components to the empty game object to intelligently spawn in player
+        BoxCollider2D spawnLocationCollider = spawnLocationObj.AddComponent<BoxCollider2D>();
+        spawnLocationCollider.size = playerSize;
+        spawnLocationCollider.isTrigger = true;
+        spawnProtection = spawnLocationObj.AddComponent<SpawnProtection>();
+
+        // Get rid of the temporary box collider
+        Destroy(tempCollider);
     }
 
     // Update is called once per frame
@@ -68,7 +87,7 @@ public class PlayerLives : MonoBehaviour
         playerMovement.enabled = false;
 
         // Reset player rotation, linear velocity and angular velocity
-        transform.position = Vector3.zero;
+        transform.position = spawnLocation.position;
         transform.rotation = Quaternion.identity;
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0.0f;
