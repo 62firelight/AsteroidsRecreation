@@ -86,7 +86,7 @@ public class LevelMaster : MonoBehaviour
         }
         else
         {
-            GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), "Game Over");
+            GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), "Game Over\nPress R to restart");
         }
     }
 }

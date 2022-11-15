@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultRespawnCooldown: 1.5
+  isColliding: 0
 --- !u!114 &1893651811
 MonoBehaviour:
   m_ObjectHideFlags: 0
