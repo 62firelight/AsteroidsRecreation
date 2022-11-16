@@ -17,6 +17,8 @@ public static class GameMaster
     {
         score = 0;
         playerLives = 3;
+        levelsCompleted = 0;
+        asteroidsLeft = 1;
     }
 
 }
