@@ -13,6 +13,8 @@ public class LevelMaster : MonoBehaviour
 
     private Vector2[][] boundaries;
 
+    private float nextLevelCooldown = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +59,20 @@ public class LevelMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (nextLevelCooldown > 0)
+        {
+            nextLevelCooldown -= Time.deltaTime;
+
+            if (nextLevelCooldown <= 0)
+            {
+                NextLevel();
+            }
+        }
+        else if (GameMaster.playerLives > 0 && GameMaster.asteroidsLeft <= 0)
+        {
+            nextLevelCooldown = 1.5f;
+        }
+
         // Whenever R is pressed, restart the game
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -69,10 +85,10 @@ public class LevelMaster : MonoBehaviour
             NextLevel();
         }
 
-        if (GameMaster.playerLives > 0 && GameMaster.asteroidsLeft <= 0)
-        {
-            NextLevel();
-        }
+        // if (GameMaster.playerLives > 0 && GameMaster.asteroidsLeft <= 0)
+        // {
+        //     nextLevelCooldown = 1.5f;
+        // }
     }
 
     void OnGUI()
