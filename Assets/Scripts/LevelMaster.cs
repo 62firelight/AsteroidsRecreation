@@ -15,6 +15,8 @@ public class LevelMaster : MonoBehaviour
 
     private float nextLevelCooldown = 0.0f;
 
+    private float defaultNextLevelCooldown = 2.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,7 +72,7 @@ public class LevelMaster : MonoBehaviour
         }
         else if (GameMaster.playerLives > 0 && GameMaster.asteroidsLeft <= 0)
         {
-            nextLevelCooldown = 1.5f;
+            nextLevelCooldown = defaultNextLevelCooldown;
         }
 
         // Whenever R is pressed, restart the game
@@ -84,11 +86,6 @@ public class LevelMaster : MonoBehaviour
         {
             NextLevel();
         }
-
-        // if (GameMaster.playerLives > 0 && GameMaster.asteroidsLeft <= 0)
-        // {
-        //     nextLevelCooldown = 1.5f;
-        // }
     }
 
     void OnGUI()
