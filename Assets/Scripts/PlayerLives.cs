@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerShoot))]
 public class PlayerLives : MonoBehaviour
 {
     public float defaultRespawnCooldown = 1.5f;
@@ -22,6 +23,8 @@ public class PlayerLives : MonoBehaviour
 
     private PlayerMovement playerMovement;
 
+    private PlayerShoot playerShoot;
+
     private float respawnCooldown;
 
     // Start is called before the first frame update
@@ -31,6 +34,7 @@ public class PlayerLives : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerShoot = GetComponent<PlayerShoot>();
 
         // Create a temporary box collider that auto calculates the player size
         BoxCollider2D tempCollider = gameObject.AddComponent<BoxCollider2D>();
@@ -64,6 +68,7 @@ public class PlayerLives : MonoBehaviour
                     sr.enabled = true;
                     collider.enabled = true;
                     playerMovement.enabled = true;
+                    playerShoot.enabled = true;
                 }
                 else if (!spawnProtection.GetIsSafe())
                 {
@@ -85,6 +90,7 @@ public class PlayerLives : MonoBehaviour
         sr.enabled = false;
         collider.enabled = false;
         playerMovement.enabled = false;
+        playerShoot.enabled = false;
 
         // Reset player rotation, linear velocity and angular velocity
         transform.position = spawnLocation.position;
