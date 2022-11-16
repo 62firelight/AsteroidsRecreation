@@ -9,6 +9,10 @@ public static class GameMaster
 
     public static int playerLives = 3;
 
+    public static int levelsCompleted = 0;
+
+    public static int asteroidsLeft = 1;
+
     public static void Reset()
     {
         score = 0;

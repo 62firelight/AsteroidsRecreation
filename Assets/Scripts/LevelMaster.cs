@@ -11,6 +11,8 @@ public class LevelMaster : MonoBehaviour
 
     private int numberOfAsteroids;
 
+    private Vector2[][] boundaries;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,26 +30,12 @@ public class LevelMaster : MonoBehaviour
         Vector2[] topBoundaryPoints = new Vector2[] { topLeftPoint, topRightPoint };
         Vector2[] rightBoundaryPoints = new Vector2[] { topRightPoint, bottomRightPoint };
         Vector2[] bottomBoundaryPoints = new Vector2[] { bottomRightPoint, bottomLeftPoint };
-        Vector2[][] boundaries = new Vector2[][] { leftBoundaryPoints, topBoundaryPoints, rightBoundaryPoints, bottomBoundaryPoints };
+        boundaries = new Vector2[][] { leftBoundaryPoints, topBoundaryPoints, rightBoundaryPoints, bottomBoundaryPoints };
 
-        // Spawn asteroids
-        numberOfAsteroids = initialNumberOfAsteroids;
-        for (int i = 0; i < numberOfAsteroids; i++) 
-        {
-            // Select random boundary edge
-            int randomBoundaryIndex = Random.Range(0, boundaries.Length);
-            Vector2[] randomBoundary = boundaries[randomBoundaryIndex];
-
-            // Select random position on the selected boundary edge
-            Vector2 firstPos = randomBoundary[0];
-            Vector2 secondPos = randomBoundary[1];
-            Vector2 randomPos = new Vector2(Random.Range(firstPos.x, secondPos.x), Random.Range(firstPos.y, secondPos.y));
-
-            // Add small offset to create variety in random positions
-            randomPos += new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
-
-            Instantiate(asteroidPrefab, randomPos, transform.rotation);
-        }
+        numberOfAsteroids = initialNumberOfAsteroids + GameMaster.levelsCompleted;
+        SpawnAsteroids();
+        // Each asteroid is technically 7 asteroids because of how they split
+        GameMaster.asteroidsLeft = numberOfAsteroids * 7;
 
         // Set up screen boundaries
         // Currently disabled
@@ -69,11 +57,21 @@ public class LevelMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Whenever R is pressed, restart the current scene
+        // Whenever R is pressed, restart the game
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            GameMaster.Reset();
+            RestartGame();
+        }
+
+        // Whenever N is pressed, progress to the next level
+        if (GameMaster.playerLives > 0 && Input.GetKeyDown(KeyCode.N))
+        {
+            NextLevel();
+        }
+
+        if (GameMaster.playerLives > 0 && GameMaster.asteroidsLeft <= 0)
+        {
+            NextLevel();
         }
     }
 
@@ -88,5 +86,43 @@ public class LevelMaster : MonoBehaviour
         {
             GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), "Game Over\nPress R to restart");
         }
+    }
+
+    void SpawnAsteroids()
+    {
+        if (boundaries == null)
+        {
+            Debug.LogError("Screen boundaries has not been initialized before attempting to spawn asteroids!");
+            return;
+        }
+
+        for (int i = 0; i < numberOfAsteroids; i++)
+        {
+            // Select random boundary edge
+            int randomBoundaryIndex = Random.Range(0, boundaries.Length);
+            Vector2[] randomBoundary = boundaries[randomBoundaryIndex];
+
+            // Select random position on the selected boundary edge
+            Vector2 firstPos = randomBoundary[0];
+            Vector2 secondPos = randomBoundary[1];
+            Vector2 randomPos = new Vector2(Random.Range(firstPos.x, secondPos.x), Random.Range(firstPos.y, secondPos.y));
+
+            // Add small offset to create variety in random positions
+            randomPos += new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
+
+            Instantiate(asteroidPrefab, randomPos, transform.rotation);
+        }
+    }
+
+    void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameMaster.levelsCompleted++;
+    }
+
+    void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameMaster.Reset();
     }
 }

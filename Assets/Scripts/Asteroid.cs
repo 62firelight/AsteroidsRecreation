@@ -61,6 +61,8 @@ public class Asteroid : MonoBehaviour
         }
 
         Destroy(gameObject);
+
+        GameMaster.asteroidsLeft--;
     }
 
     void IncreaseScore()
