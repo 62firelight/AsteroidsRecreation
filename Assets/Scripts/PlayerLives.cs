@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(PlayerMovement))]
-[RequireComponent(typeof(PlayerShoot))]
+[RequireComponent(typeof(PlayerUtility))]
 public class PlayerLives : MonoBehaviour
 {
     public float defaultRespawnCooldown = 1.5f;
@@ -15,26 +12,17 @@ public class PlayerLives : MonoBehaviour
 
     private SpawnProtection spawnProtection;
 
-    private SpriteRenderer sr;
-
     private Rigidbody2D rb;
 
-    private Collider2D collider;
-
-    private PlayerMovement playerMovement;
-
-    private PlayerShoot playerShoot;
+    private PlayerUtility playerUtility;
 
     private float respawnCooldown;
 
     // Start is called before the first frame update
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<Collider2D>();
-        playerMovement = GetComponent<PlayerMovement>();
-        playerShoot = GetComponent<PlayerShoot>();
+        playerUtility = GetComponent<PlayerUtility>();
 
         // Create a temporary box collider that auto calculates the player size
         BoxCollider2D tempCollider = gameObject.AddComponent<BoxCollider2D>();
@@ -65,10 +53,7 @@ public class PlayerLives : MonoBehaviour
 
                 if (respawnCooldown < 0 && spawnProtection.GetIsSafe())
                 {
-                    sr.enabled = true;
-                    collider.enabled = true;
-                    playerMovement.enabled = true;
-                    playerShoot.enabled = true;
+                    playerUtility.UnhidePlayer();
                 }
                 else if (!spawnProtection.GetIsSafe())
                 {
@@ -87,10 +72,7 @@ public class PlayerLives : MonoBehaviour
 
         GameMaster.playerLives--;
 
-        sr.enabled = false;
-        collider.enabled = false;
-        playerMovement.enabled = false;
-        playerShoot.enabled = false;
+        playerUtility.HidePlayer();
 
         // Reset player rotation, linear velocity and angular velocity
         transform.position = spawnLocation.position;
