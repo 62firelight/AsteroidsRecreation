@@ -86,20 +86,16 @@ public class Asteroid : MonoBehaviour
     {
         // Calculate score to add based on asteroid size
         // Smaller asteroids give higher score
-        // Specifically:
-        // -- Big Asteroid: +20
-        // -- Medium Asteroid: +50
-        // -- Small Asteroid: +100
         switch (timesSplit)
         {
             case 0:
-                GameMaster.score += 20;
+                GameMaster.IncreaseScore(0);
                 break;
             case 1:
-                GameMaster.score += 50;
+                GameMaster.IncreaseScore(1);
                 break;
             case 2:
-                GameMaster.score += 100;
+                GameMaster.IncreaseScore(2);
                 break;
             default:
                 break;

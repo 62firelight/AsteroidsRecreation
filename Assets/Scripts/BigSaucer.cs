@@ -115,6 +115,6 @@ public class BigSaucer : MonoBehaviour
 
     void IncreaseScore()
     {
-        GameMaster.score += 200;
+        GameMaster.IncreaseScore(3);
     }
 }
