@@ -26,7 +26,23 @@ public class Asteroid : MonoBehaviour
         Physics2D.IgnoreLayerCollision(3, 3, true);
         Physics2D.IgnoreLayerCollision(3, 6, true);
 
-        floatSpeed = Random.Range(50, 90);
+        // Assign different speeds based on asteroid size
+        // (Smaller asteroids are faster and vice versa)
+        switch (timesSplit)
+        {
+            case 0:
+                floatSpeed = Random.Range(50, 60);
+                break;
+            case 1:
+                floatSpeed = Random.Range(60, 80);
+                break;
+            case 2:
+                floatSpeed = Random.Range(70, 90);
+                break;
+            default:
+                break;
+        }
+
         transform.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
 
         // Get coordinates for bottom-left point and top-right point of screen
