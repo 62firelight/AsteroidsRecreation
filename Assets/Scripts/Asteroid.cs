@@ -26,7 +26,7 @@ public class Asteroid : MonoBehaviour
         Physics2D.IgnoreLayerCollision(3, 3, true);
         Physics2D.IgnoreLayerCollision(3, 6, true);
 
-        floatSpeed = Random.Range(40, 50);
+        floatSpeed = Random.Range(50, 80);
 
         // Get coordinates for bottom-left point and top-right point of screen
         Vector2 bottomLeftPoint = Camera.main.ScreenToWorldPoint(Vector3.zero);
