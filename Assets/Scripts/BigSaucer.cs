@@ -74,6 +74,12 @@ public class BigSaucer : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        if (other.gameObject.tag == "Projectile")
+        {
+            // TODO: Check if projectile came from player
+            IncreaseScore();
+        }
+
         Destroy(gameObject);
     }
 
@@ -105,5 +111,10 @@ public class BigSaucer : MonoBehaviour
         randomDirection.Normalize();
 
         return randomDirection;
+    }
+
+    void IncreaseScore()
+    {
+        GameMaster.score += 200;
     }
 }

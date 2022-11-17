@@ -11,6 +11,10 @@ public class LevelMaster : MonoBehaviour
 
     public float defaultNextLevelCooldown = 2.0f;
 
+    public Transform bigSaucerPrefab;
+
+    public float defaultBigSaucerCooldown = 15.0f;
+
     public PlayerUtility playerUtility;
 
     private int numberOfAsteroids;
@@ -18,6 +22,8 @@ public class LevelMaster : MonoBehaviour
     private Vector2[][] boundaries;
 
     private float nextLevelCooldown = 0.0f;
+
+    private float bigSaucerCooldown = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +48,8 @@ public class LevelMaster : MonoBehaviour
         SpawnAsteroids();
         // Each asteroid is technically 7 asteroids because of how they split
         GameMaster.asteroidsLeft = numberOfAsteroids * 7;
+
+        bigSaucerCooldown = defaultBigSaucerCooldown;
 
         // Set up screen boundaries
         // Currently disabled
@@ -79,6 +87,36 @@ public class LevelMaster : MonoBehaviour
             if (playerUtility != null)
             {
                 playerUtility.HidePlayer();
+            }
+        }
+
+        if (bigSaucerCooldown > 0)
+        {
+            bigSaucerCooldown -= Time.deltaTime;
+
+            if (bigSaucerCooldown <= 0)
+            {
+                // Flip a coin to see if the saucer should spawn on the left or right side
+                int rightSide = Random.Range(0, 2);
+                Vector2 bottomLeftPoint = boundaries[0][0];
+                Vector2 topRightPoint = boundaries[1][1];
+
+                // Decide saucer position based on coin flip above
+                Vector2 saucerPosition;
+                if (rightSide == 0)
+                {
+                    saucerPosition = new Vector2(bottomLeftPoint.x - 0.5f, Random.Range(bottomLeftPoint.y + 0.5f, topRightPoint.y - 0.5f));
+                }
+                else 
+                {
+                    saucerPosition = new Vector2(topRightPoint.x + 0.5f, Random.Range(bottomLeftPoint.y + 0.5f, topRightPoint.y - 0.5f));
+                }
+
+                // Spawn big saucer
+                Transform bigSaucer = Instantiate(bigSaucerPrefab);
+                bigSaucer.position = saucerPosition;
+
+                bigSaucerCooldown = defaultBigSaucerCooldown;
             }
         }
 
