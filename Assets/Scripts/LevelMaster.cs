@@ -100,7 +100,7 @@ public class LevelMaster : MonoBehaviour
         GUI.skin.label.alignment = TextAnchor.UpperCenter;
         if (GameMaster.playerLives > 0)
         {
-            GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), "Score: " + GameMaster.score + ", Lives: " + GameMaster.playerLives);
+            GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), "Score: " + GameMaster.score + "    Lives: " + GameMaster.playerLives);
         }
         else
         {
