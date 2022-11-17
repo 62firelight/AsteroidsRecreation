@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 782847313645254759}
   - component: {fileID: 782847313645254752}
   - component: {fileID: 782847313645254753}
+  - component: {fileID: 6354156161719206397}
   m_Layer: 0
   m_Name: Saucer
   m_TagString: Saucer
@@ -189,3 +190,15 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4393470934018861164, guid: 259e419a904ebf747861cb92a14c76fb, type: 3}
   projectileSpeed: 10
   projectileCooldown: 1
+--- !u!114 &6354156161719206397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782847313645254756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 255e5ef369988e947acf4e915b44ed07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

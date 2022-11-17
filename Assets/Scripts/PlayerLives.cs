@@ -76,11 +76,6 @@ public class PlayerLives : MonoBehaviour
             return;
         }
 
-        // if (other.gameObject.tag != "Asteroid" && other.gameObject.tag != "Projectile" && other.gameObject.tag != "Saucer")
-        // {
-        //     return;
-        // }
-
         GameMaster.playerLives--;
 
         playerUtility.HidePlayer();
