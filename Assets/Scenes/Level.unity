@@ -243,6 +243,7 @@ MonoBehaviour:
   initialNumberOfAsteroids: 4
   defaultNextLevelCooldown: 2
   bigSaucerPrefab: {fileID: 782847313645254758, guid: 58a15695e78fc324d85c9741d81bf338, type: 3}
+  smallSaucerPrefab: {fileID: 8051174094741222302, guid: 491d17a73e20f8d43a3fb337cb5d3c68, type: 3}
   defaultBigSaucerCooldown: 15
   playerUtility: {fileID: 2100268582}
 --- !u!4 &1816469474
@@ -481,6 +482,10 @@ PrefabInstance:
     - target: {fileID: 8051174094741222300, guid: 491d17a73e20f8d43a3fb337cb5d3c68, type: 3}
       propertyPath: m_Name
       value: SmallSaucer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8051174094741222300, guid: 491d17a73e20f8d43a3fb337cb5d3c68, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8051174094741222302, guid: 491d17a73e20f8d43a3fb337cb5d3c68, type: 3}
       propertyPath: m_RootOrder

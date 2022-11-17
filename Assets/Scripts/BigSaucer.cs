@@ -104,6 +104,7 @@ public class BigSaucer : MonoBehaviour
         {
             Vector2 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
             projectileDirection = new Vector2(playerPosition.x - transform.position.x, playerPosition.y - transform.position.y);
+            projectileDirection.Normalize();
         }
         else
         {
@@ -129,6 +130,13 @@ public class BigSaucer : MonoBehaviour
 
     void IncreaseScore()
     {
-        GameMaster.IncreaseScore(3);
+        if (isSmallSaucer)
+        {
+            GameMaster.IncreaseScore(4);
+        }
+        else
+        {
+            GameMaster.IncreaseScore(3);
+        }
     }
 }

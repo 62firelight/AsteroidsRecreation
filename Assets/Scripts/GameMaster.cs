@@ -47,6 +47,9 @@ public static class GameMaster
             case 3:
                 score += 200;
                 break;
+            case 4:
+                score += 1000;
+                break;
             default:
                 break;
         }
