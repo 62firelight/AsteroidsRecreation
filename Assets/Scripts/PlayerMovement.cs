@@ -48,6 +48,14 @@ public class PlayerMovement : MonoBehaviour
                 playerUtility.UnhidePlayer();
             }
         }
+
+        // Rotational movement
+        float directionInput = Input.GetAxis("Horizontal");
+        if (directionInput != 0)
+        {
+            rb.angularVelocity = -directionInput * turnSpeed;
+        }
+
         // Whenever either of the Shift buttons are pressed, teleport the player to a random place
         else if (movementEnabled && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
         {
@@ -63,16 +71,11 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        // Launch/thrust movement
         float forwardInput = Input.GetAxis("Vertical");
         if (forwardInput > 0)
         {
             rb.AddForce(transform.up * launchSpeed * Time.fixedDeltaTime);
-        }
-
-        float directionInput = Input.GetAxis("Horizontal");
-        if (directionInput != 0)
-        {
-            rb.angularVelocity = -directionInput * turnSpeed;
         }
     }
 }
