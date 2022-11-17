@@ -11,14 +11,14 @@ public class PlayerMovement : MonoBehaviour
     public float launchSpeed = 150.0f;
 
     public float turnSpeed = 2.0f;
+    
+    public float defaultTeleportCooldown = 1.0f;
 
     private Rigidbody2D rb;
 
     private PlayerUtility playerUtility;
 
-    public float teleportCooldown = 0.0f;
-
-    private float defaultTeleportCooldown = 1.0f;
+    private float teleportCooldown = 0.0f;
 
     // Start is called before the first frame update
     void Start()

@@ -9,6 +9,8 @@ public class LevelMaster : MonoBehaviour
 
     public int initialNumberOfAsteroids = 4;
 
+    public float defaultNextLevelCooldown = 2.0f;
+
     public PlayerUtility playerUtility;
 
     private int numberOfAsteroids;
@@ -16,8 +18,6 @@ public class LevelMaster : MonoBehaviour
     private Vector2[][] boundaries;
 
     private float nextLevelCooldown = 0.0f;
-
-    private float defaultNextLevelCooldown = 2.0f;
 
     // Start is called before the first frame update
     void Start()
