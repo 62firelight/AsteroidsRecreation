@@ -7,11 +7,13 @@ using UnityEngine;
 [RequireComponent(typeof(DespawnOutsideView))]
 public class BigSaucer : MonoBehaviour
 {
+    public bool isSmallSaucer = false;
+
     public float speed = 2.0f;
     
     public Transform projectilePrefab;
 
-    public float projectileSpeed = 10.0f;
+    public float projectileSpeed = 2.5f;
 
     public float defaultProjectileCooldown = 1.0f;
 
@@ -96,9 +98,21 @@ public class BigSaucer : MonoBehaviour
             Physics2D.IgnoreCollision(projectileCollider, collider);
         }
 
+        // Decide which direction the projectile will go
+        Vector2 projectileDirection;
+        if (isSmallSaucer)
+        {
+            Vector2 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
+            projectileDirection = new Vector2(playerPosition.x - transform.position.x, playerPosition.y - transform.position.y);
+        }
+        else
+        {
+            projectileDirection = GenerateRandomDirection();
+        }
+
         // Add force to the projectile
         Rigidbody2D projectileRb = projectile.gameObject.GetComponent<Rigidbody2D>();
-        projectileRb.AddForce(GenerateRandomDirection() * projectileSpeed);
+        projectileRb.AddForce(projectileDirection * projectileSpeed);
     }
 
     Vector2 GenerateRandomDirection()
