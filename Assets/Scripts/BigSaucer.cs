@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(DespawnOutsideView))]
 public class BigSaucer : MonoBehaviour
 {
     public float speed = 2.0f;
@@ -12,19 +13,26 @@ public class BigSaucer : MonoBehaviour
 
     public float projectileSpeed = 10.0f;
 
-    public float projectileCooldown = 1.0f;
+    public float defaultProjectileCooldown = 1.0f;
+
+    public float defaultSpawnCooldown = 5.0f;
+
+    private float spawnCooldown;
+
+    private float projectileCooldown;
 
     private Rigidbody2D rb;
 
     private Collider2D collider;
 
-    private float defaultProjectileCooldown = 1.0f;
+    private DespawnOutsideView despawnOutsideView;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
+        despawnOutsideView = GetComponent<DespawnOutsideView>();
 
         if (transform.position.x > 0)
         {
@@ -32,11 +40,26 @@ public class BigSaucer : MonoBehaviour
         }
 
         rb.velocity = new Vector2(speed, 0);
+
+        projectileCooldown = defaultProjectileCooldown;
+        spawnCooldown = defaultSpawnCooldown;
+
+        despawnOutsideView.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (spawnCooldown > 0)
+        {
+            spawnCooldown -= Time.deltaTime;
+
+            if (spawnCooldown <= 0)
+            {
+                despawnOutsideView.enabled = true;
+            }
+        }
+
         if (projectileCooldown > 0)
         {
             projectileCooldown -= Time.deltaTime;
