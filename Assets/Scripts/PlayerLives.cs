@@ -18,6 +18,12 @@ public class PlayerLives : MonoBehaviour
 
     private float respawnCooldown;
 
+    private HashSet<string> collidableObjects = new HashSet<string>() { 
+        "Asteroid",
+        "Projectile",
+        "Saucer"
+    };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,10 +71,15 @@ public class PlayerLives : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag != "Asteroid")
+        if (!collidableObjects.Contains(other.gameObject.tag))
         {
             return;
         }
+
+        // if (other.gameObject.tag != "Asteroid" && other.gameObject.tag != "Projectile" && other.gameObject.tag != "Saucer")
+        // {
+        //     return;
+        // }
 
         GameMaster.playerLives--;
 
