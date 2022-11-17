@@ -9,6 +9,8 @@ public class LevelMaster : MonoBehaviour
 
     public int initialNumberOfAsteroids = 4;
 
+    public PlayerUtility playerUtility;
+
     private int numberOfAsteroids;
 
     private Vector2[][] boundaries;
@@ -73,6 +75,11 @@ public class LevelMaster : MonoBehaviour
         else if (GameMaster.playerLives > 0 && GameMaster.asteroidsLeft <= 0)
         {
             nextLevelCooldown = defaultNextLevelCooldown;
+
+            if (playerUtility != null)
+            {
+                playerUtility.HidePlayer();
+            }
         }
 
         // Whenever R is pressed, restart the game
