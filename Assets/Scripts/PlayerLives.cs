@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerUtility))]
 public class PlayerLives : MonoBehaviour
 {
+    public Transform explosionPrefab;
+
     public float defaultRespawnCooldown = 1.5f;
 
     private Transform spawnLocation;
@@ -79,6 +81,13 @@ public class PlayerLives : MonoBehaviour
         GameMaster.playerLives--;
 
         playerUtility.HidePlayer();
+
+        for (int i = 0; i < 4; i++)
+        {
+            Transform explosion = Instantiate(explosionPrefab);
+            explosion.position = transform.position;
+            explosion.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
+        }
 
         // Reset player rotation, linear velocity and angular velocity
         transform.position = spawnLocation.position;

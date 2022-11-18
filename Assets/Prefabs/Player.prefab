@@ -132,8 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96f82060704b9d4884e9a7adb31d12b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementEnabled: 1
   launchSpeed: 200
   turnSpeed: 175
+  defaultTeleportCooldown: 1
 --- !u!114 &1864317529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae2b3e4733104b43a09b152435c3018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 7889372948753482317, guid: 8ccff3e60619fcc48993972c70dda83c, type: 3}
   defaultRespawnCooldown: 1.5
 --- !u!114 &1492081704943072527
 MonoBehaviour:
