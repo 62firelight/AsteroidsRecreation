@@ -11,6 +11,8 @@ public class Asteroid : MonoBehaviour
 
     public int maxFloatSpeed = 50;
 
+    public Transform explosionPrefab;
+
     private int floatSpeed = 50;
 
     private int timesSplit = 0;
@@ -78,8 +80,15 @@ public class Asteroid : MonoBehaviour
         }
 
         Destroy(gameObject);
-
         GameMaster.asteroidsLeft--;
+
+        // Spawn explosions
+        for (int i = 0; i < 5; i++)
+        {
+            Transform explosion = Instantiate(explosionPrefab);
+            explosion.position = transform.position;
+        }
+        
     }
 
     void IncreaseScore()
