@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(DespawnOutsideView))]
-public class BigSaucer : MonoBehaviour
+public class Saucer : MonoBehaviour
 {
     public bool isSmallSaucer = false;
 
