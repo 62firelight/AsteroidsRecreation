@@ -13,6 +13,8 @@ public class BigSaucer : MonoBehaviour
     
     public Transform projectilePrefab;
 
+    public Transform explosionPrefab;
+
     public float projectileSpeed = 2.5f;
 
     public float defaultProjectileCooldown = 1.0f;
@@ -83,6 +85,13 @@ public class BigSaucer : MonoBehaviour
         }
 
         Destroy(gameObject);
+
+        // Spawn explosions
+        for (int i = 0; i < 5; i++)
+        {
+            Transform explosion = Instantiate(explosionPrefab);
+            explosion.position = transform.position;
+        }
     }
 
     void ShootProjectile()

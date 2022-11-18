@@ -189,6 +189,7 @@ MonoBehaviour:
   isSmallSaucer: 1
   speed: 2
   projectilePrefab: {fileID: 4393470934018861164, guid: 259e419a904ebf747861cb92a14c76fb, type: 3}
+  explosionPrefab: {fileID: 7889372948753482317, guid: d6c637099b1902f4191e516d0849db35, type: 3}
   projectileSpeed: 2
   defaultProjectileCooldown: 1
   defaultSpawnCooldown: 5

@@ -7,11 +7,11 @@ public class Asteroid : MonoBehaviour
 
     public Transform asteroidPrefab;
 
+    public Transform explosionPrefab;
+
     public int minFloatSpeed = 40;
 
     public int maxFloatSpeed = 50;
-
-    public Transform explosionPrefab;
 
     private int floatSpeed = 50;
 
