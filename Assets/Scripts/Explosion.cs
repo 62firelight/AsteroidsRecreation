@@ -20,7 +20,7 @@ public class Explosion : MonoBehaviour
 
         // Assign random direction and speed
         Vector2 direction = GenerateRandomDirection();
-        float explosionSpeed = Random.Range(speed - 25.0f, speed + 25.0f);
+        float explosionSpeed = Random.Range(speed - 25.0f, speed + 50.0f);
         rb.AddForce(direction * explosionSpeed);
 
         // Assign random timer for despawn
