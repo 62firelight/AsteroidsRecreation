@@ -243,6 +243,7 @@ MonoBehaviour:
   - {fileID: 7358679342105851168, guid: 9e5f13af3aac86b45ab958bbf91460fb, type: 3}
   - {fileID: 7358679342105851168, guid: 278787f6db635a84c95f2f8841df8523, type: 3}
   - {fileID: 7358679342105851168, guid: ef3cfa9ef9822e04590967cd16af6785, type: 3}
+  - {fileID: 7358679342105851168, guid: e8a98232090e53346bf7f693a23a74cb, type: 3}
   asteroidPrefab: {fileID: 7358679342105851197, guid: 9e5f13af3aac86b45ab958bbf91460fb, type: 3}
   initialNumberOfAsteroids: 4
   defaultNextLevelCooldown: 2
