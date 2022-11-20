@@ -45,7 +45,7 @@ public class Saucer : MonoBehaviour
 
         rb.velocity = new Vector2(speed, 0);
 
-        projectileCooldown = defaultProjectileCooldown;
+        projectileCooldown = defaultProjectileCooldown / 2.0f;
         spawnCooldown = defaultSpawnCooldown;
 
         despawnOutsideView.enabled = false;
