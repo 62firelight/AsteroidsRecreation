@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelMaster : MonoBehaviour
 {
+    public GameObject[] asteroidPrefabs;
+
     public Transform asteroidPrefab;
 
     public int initialNumberOfAsteroids = 4;
@@ -165,7 +167,11 @@ public class LevelMaster : MonoBehaviour
             // Add small offset to create variety in random positions
             randomPos += new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
 
-            Instantiate(asteroidPrefab, randomPos, transform.rotation);
+            // Select random asteroid prefab
+            int randomAsteroidIndex = Random.Range(0, asteroidPrefabs.Length);
+            GameObject randomAsteroid = asteroidPrefabs[randomAsteroidIndex];
+
+            Instantiate(randomAsteroid, randomPos, transform.rotation);
         }
     }
 

@@ -7,6 +7,7 @@ TagManager:
   - Asteroid
   - Projectile
   - Saucer
+  - LevelMaster
   layers:
   - Default
   - TransparentFX

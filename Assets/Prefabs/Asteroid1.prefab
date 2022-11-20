@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 647151795824904284}
   - component: {fileID: 7358679342105851199}
   m_Layer: 3
-  m_Name: Asteroid
+  m_Name: Asteroid1
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,10 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bfc5723b91cf2243a7cac93cd9b1a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  asteroidPrefabs:
+  - {fileID: 7358679342105851168}
+  - {fileID: 7358679342105851168, guid: 278787f6db635a84c95f2f8841df8523, type: 3}
   asteroidPrefab: {fileID: 7358679342105851197}
+  explosionPrefab: {fileID: 7889372948753482317, guid: d6c637099b1902f4191e516d0849db35, type: 3}
   minFloatSpeed: 40
   maxFloatSpeed: 50
-  explosionPrefab: {fileID: 7889372948753482317, guid: d6c637099b1902f4191e516d0849db35, type: 3}
 --- !u!114 &-6785947608789412505
 MonoBehaviour:
   m_ObjectHideFlags: 0

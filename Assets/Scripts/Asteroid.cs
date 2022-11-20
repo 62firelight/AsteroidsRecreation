@@ -5,6 +5,8 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour
 {
 
+    public GameObject[] asteroidPrefabs;
+
     public Transform asteroidPrefab;
 
     public Transform explosionPrefab;
@@ -23,6 +25,22 @@ public class Asteroid : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        // Attempt to get list of asteroids from level master object in the scene
+        GameObject levelMasterObj = GameObject.FindWithTag("LevelMaster");
+        if (levelMasterObj != null)
+        {
+            LevelMaster levelMaster = levelMasterObj.GetComponent<LevelMaster>();
+
+            if (levelMaster != null)
+            {
+                asteroidPrefabs = levelMaster.asteroidPrefabs;
+            }
+        }
+        else
+        {
+            asteroidPrefabs = new GameObject[] { asteroidPrefab.gameObject };
+        }
 
         // Ignore collisions for asteroid and boundary layer
         Physics2D.IgnoreLayerCollision(3, 3, true);
@@ -113,13 +131,23 @@ public class Asteroid : MonoBehaviour
 
     void Split()
     {
+        // Select random asteroid prefab
+        int randomFirstAsteroidIndex = Random.Range(0, asteroidPrefabs.Length);
+        GameObject randomFirstAsteroid = asteroidPrefabs[randomFirstAsteroidIndex];
+
+        // Select random asteroid prefab
+        int randomSecondAsteroidIndex = Random.Range(0, asteroidPrefabs.Length);
+        GameObject randomSecondAsteroid = asteroidPrefabs[randomSecondAsteroidIndex];
+
         // Split into two asteroids
-        Transform firstAsteroid = Instantiate(asteroidPrefab);
+        Transform firstAsteroid = Instantiate(randomFirstAsteroid).GetComponent<Transform>();
+        firstAsteroid.position = transform.position;
         firstAsteroid.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
         firstAsteroid.localScale /= 2.0f;
         firstAsteroid.GetComponent<Asteroid>().SetTimesSplit(timesSplit + 1);
 
-        Transform secondAsteroid = Instantiate(asteroidPrefab);
+        Transform secondAsteroid = Instantiate(randomSecondAsteroid).GetComponent<Transform>();
+        secondAsteroid.position = transform.position;
         secondAsteroid.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
         secondAsteroid.localScale /= 2.0f;
         secondAsteroid.GetComponent<Asteroid>().SetTimesSplit(timesSplit + 1);
