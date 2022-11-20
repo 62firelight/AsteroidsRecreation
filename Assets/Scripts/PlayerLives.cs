@@ -8,7 +8,7 @@ public class PlayerLives : MonoBehaviour
 {
     public Transform explosionPrefab;
 
-    public float defaultRespawnCooldown = 1.5f;
+    public float defaultRespawnCooldown = 2.0f;
 
     private Transform spawnLocation;
 
