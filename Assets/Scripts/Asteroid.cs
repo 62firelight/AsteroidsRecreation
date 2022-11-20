@@ -64,6 +64,11 @@ public class Asteroid : MonoBehaviour
         }
 
         transform.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
+        
+        if (timesSplit > 0)
+        {
+            transform.localScale *= Mathf.Pow(0.5f, timesSplit);
+        }
 
         // Get coordinates for bottom-left point and top-right point of screen
         Vector2 bottomLeftPoint = Camera.main.ScreenToWorldPoint(Vector3.zero);
@@ -142,14 +147,10 @@ public class Asteroid : MonoBehaviour
         // Split into two asteroids
         Transform firstAsteroid = Instantiate(randomFirstAsteroid).GetComponent<Transform>();
         firstAsteroid.position = transform.position;
-        firstAsteroid.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
-        firstAsteroid.localScale /= 2.0f;
         firstAsteroid.GetComponent<Asteroid>().SetTimesSplit(timesSplit + 1);
 
         Transform secondAsteroid = Instantiate(randomSecondAsteroid).GetComponent<Transform>();
         secondAsteroid.position = transform.position;
-        secondAsteroid.Rotate(0.0f, 0.0f, Random.Range(0.1f, 360.0f));
-        secondAsteroid.localScale /= 2.0f;
         secondAsteroid.GetComponent<Asteroid>().SetTimesSplit(timesSplit + 1);
     }
 
