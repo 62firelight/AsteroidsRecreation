@@ -9,15 +9,7 @@ public class UIScore : MonoBehaviour
 
     void Start()
     {
-        // Add new TextMesh Pro Component
         tmp = GetComponent<TextMeshProUGUI>();
-
-        tmp.autoSizeTextContainer = true;
-
-        // Set various font settings.
-        tmp.fontSize = 24;
-        tmp.alignment = TextAlignmentOptions.Center;
-        tmp.enableWordWrapping = false;
     }
 
     void Update()

@@ -119,8 +119,8 @@ public class LevelMaster : MonoBehaviour
             }
         }
 
-        // Whenever R is pressed, restart the game
-        if (Input.GetKeyDown(KeyCode.R))
+        // Whenever R is pressed, restart the game only if the player has no lives remaining
+        if (GameMaster.playerLives <= 0 && Input.GetKeyDown(KeyCode.R))
         {
             RestartGame();
         }
@@ -131,19 +131,6 @@ public class LevelMaster : MonoBehaviour
             NextLevel();
         }
     }
-
-    // void OnGUI()
-    // {
-    //     GUI.skin.label.alignment = TextAnchor.UpperCenter;
-    //     if (GameMaster.playerLives > 0)
-    //     {
-    //         GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), "Score: " + GameMaster.score + "    Lives: " + GameMaster.playerLives);
-    //     }
-    //     else
-    //     {
-    //         GUI.Label(new Rect(0, 0, Camera.main.pixelWidth, Camera.main.pixelHeight), "Game Over\nPress R to restart");
-    //     }
-    // }
 
     void SpawnAsteroids()
     {
