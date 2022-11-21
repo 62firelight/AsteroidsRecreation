@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementEnabled: 1
-  launchSpeed: 200
+  launchSpeed: 250
   turnSpeed: 175
   defaultTeleportCooldown: 1
 --- !u!114 &1864317529
