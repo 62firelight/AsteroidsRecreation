@@ -51,6 +51,10 @@ public class LevelMaster : MonoBehaviour
         boundaries = new Vector2[][] { leftBoundaryPoints, topBoundaryPoints, rightBoundaryPoints, bottomBoundaryPoints };
 
         numberOfAsteroids = initialNumberOfAsteroids + GameMaster.levelsCompleted;
+        if (numberOfAsteroids > 11)
+        {
+            numberOfAsteroids = 11;
+        }
         SpawnAsteroids();
         // Each asteroid is technically 7 asteroids because of how they split
         GameMaster.asteroidsLeft = numberOfAsteroids * 7;
