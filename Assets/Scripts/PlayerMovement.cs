@@ -59,12 +59,22 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.angularVelocity = -directionInput * turnSpeed;
         }
-
         // Whenever either of the Shift buttons are pressed, teleport the player to a random place
         else if (movementEnabled && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)))
         {
             teleportCooldown = defaultTeleportCooldown;
             playerUtility.HidePlayer();
+        }
+
+        // Enable/disable thrust animation
+        float forwardInput = Input.GetAxis("Vertical");
+        if (movementEnabled && forwardInput > 0)
+        {
+            thrustObj.active = true;
+        }
+        else
+        {
+            thrustObj.active = false;
         }
     }
 
@@ -76,16 +86,11 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        // Launch/thrust movement
+        // Thrust movement
         float forwardInput = Input.GetAxis("Vertical");
         if (forwardInput > 0)
         {
-            thrustObj.active = true;
             rb.AddForce(transform.up * launchSpeed * Time.fixedDeltaTime);
-        }
-        else
-        {
-            thrustObj.active = false;
         }
     }
 }
