@@ -6,11 +6,6 @@ using UnityEngine;
 public class UIScore : MonoBehaviour
 {
     private TextMeshProUGUI tmp;
-    //private TMP_FontAsset m_FontAsset;
-
-    private const string label = "The <#0050FF>count is: </color>{0:2}";
-    private float m_frame;
-
 
     void Start()
     {
@@ -24,7 +19,6 @@ public class UIScore : MonoBehaviour
         tmp.alignment = TextAlignmentOptions.Center;
         tmp.enableWordWrapping = false;
     }
-
 
     void Update()
     {
