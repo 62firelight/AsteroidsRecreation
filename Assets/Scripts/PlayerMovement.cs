@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     
     public float defaultTeleportCooldown = 1.0f;
 
+    public GameObject thrustObj;
+
     private Rigidbody2D rb;
 
     private PlayerUtility playerUtility;
@@ -25,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         playerUtility = GetComponent<PlayerUtility>();
+
+        thrustObj.active = false;
     }
 
     void Update()
@@ -68,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!movementEnabled)
         {
+            thrustObj.active = false;
             return;
         }
 
@@ -75,7 +80,12 @@ public class PlayerMovement : MonoBehaviour
         float forwardInput = Input.GetAxis("Vertical");
         if (forwardInput > 0)
         {
+            thrustObj.active = true;
             rb.AddForce(transform.up * launchSpeed * Time.fixedDeltaTime);
+        }
+        else
+        {
+            thrustObj.active = false;
         }
     }
 }
