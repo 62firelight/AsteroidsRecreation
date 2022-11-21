@@ -10,7 +10,7 @@ public class Saucer : MonoBehaviour
     public bool isSmallSaucer = false;
 
     public float speed = 2.0f;
-    
+
     public Transform projectilePrefab;
 
     public Transform explosionPrefab;
@@ -72,6 +72,34 @@ public class Saucer : MonoBehaviour
             {
                 ShootProjectile();
                 projectileCooldown = defaultProjectileCooldown;
+            }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        // The saucer has a 1% chance of changing where it moves
+        int randomDiagonalRoll = Random.Range(1, 101);
+        if (randomDiagonalRoll == 1)
+        {
+            // If already going up or down, stop going up or down
+            if (rb.velocity.y > 0)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 0);
+            }
+            else
+            {
+                // Decide whether to go up or down
+                int randomUpRoll = Random.Range(0, 2);
+
+                if (randomUpRoll > 0)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, speed);
+                }
+                else
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, -speed);
+                }
             }
         }
     }
