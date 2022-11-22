@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7889372948753482315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.2166713, y: -2.2746587, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -117,4 +117,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def1ba965ba91214ea9040d685133609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 100
   defaultDespawnCooldown: 0.5
