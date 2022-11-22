@@ -6,12 +6,12 @@ It is not intended to be 1-to-1 recreation. This is more of an exercise to pract
 
 ## Controls
 
-**W / Up Arrow** - Thrust
-**A / Left Arrow** - Rotate counter-clockwise
-**D / Right Arrow** - Rotate clockwise
-**Space** - Shoot
-**Left Shift / Right Shift** - Teleport to random location
-**Escape** - Pause game
+* **W / Up Arrow** - Thrust
+* **A / Left Arrow** - Rotate counter-clockwise
+* **D / Right Arrow** - Rotate clockwise
+* **Space** - Shoot
+* **Left Shift / Right Shift** - Teleport to random location
+* **Escape** - Pause game
 
 ## Known Issues
 
