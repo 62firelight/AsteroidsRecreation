@@ -11,6 +11,7 @@ It is not intended to be 1-to-1 recreation. This is more of an exercise to pract
 **D / Right Arrow** - Rotate clockwise
 **Space** - Shoot
 **Left Shift / Right Shift** - Teleport to random location
+**Escape** - Pause game
 
 ## Known Issues
 
