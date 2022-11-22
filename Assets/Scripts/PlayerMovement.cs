@@ -53,6 +53,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+        if (!movementEnabled)
+        {
+            thrustObj.active = false;
+            return;
+        }
+
         // Rotational movement
         float directionInput = Input.GetAxis("Horizontal");
         if (directionInput != 0)
