@@ -35,7 +35,7 @@ public class LoopOutsideView : MonoBehaviour
                 // Delay the next position change slightly,
                 // so that the object doesn't get stuck out of bounds
                 // teleporting to different positions
-                loopCooldown = 0.5f;
+                loopCooldown = 2.0f;
             }
         }
         else if (loopCooldown > 0)
