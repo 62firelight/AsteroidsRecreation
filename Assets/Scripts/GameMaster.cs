@@ -7,7 +7,9 @@ public static class GameMaster
     
     public static int score = 0;
 
-    public static int playerLives = 3;
+    public static int playerMaxLives = 3;
+
+    public static int playerLives = playerMaxLives;
 
     public static int levelsCompleted = 0;
 

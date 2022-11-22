@@ -11,9 +11,16 @@ public class UILives : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameMaster.playerLives < 3)
+        for (int i = 0; i < GameMaster.playerMaxLives; i++)
         {
-            lives[GameMaster.playerLives].active = false;
+            if (i + 1 > GameMaster.playerLives)
+            {
+                lives[i].active = false;
+            }
+            else 
+            {
+                lives[i].active = true;
+            }
         }
 
         if (GameMaster.playerLives <= 0)
