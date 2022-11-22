@@ -107,7 +107,13 @@ public class LevelMaster : MonoBehaviour
 
             if (bigSaucerCooldown <= 0)
             {
-                SpawnSaucer(false);
+                // 50% chance for big saucers to spawn
+                int bigSaucerRoll = Random.Range(0, 2);
+
+                if (bigSaucerRoll == 1)
+                {
+                    SpawnSaucer(false);
+                }
                 bigSaucerCooldown = defaultBigSaucerCooldown;
             }
         }
@@ -118,7 +124,13 @@ public class LevelMaster : MonoBehaviour
 
             if (smallSaucerCooldown <= 0)
             {
-                SpawnSaucer(true);
+                // 25% chance for small saucers to spawn
+                int smallSaucerRoll = Random.Range(0, 4);
+
+                if (smallSaucerRoll == 1)
+                {
+                    SpawnSaucer(true);
+                }
                 smallSaucerCooldown = defaultBigSaucerCooldown * 1.5f;
             }
         }
