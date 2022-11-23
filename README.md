@@ -15,5 +15,6 @@ It is not intended to be 1-to-1 recreation. This is more of an exercise to pract
 
 ## Known Issues
 
+* No audio has been implemented.
 * If the player is able to acquire more than 3 lives, the 4th, 5th and any more consecutive lives will not be displayed on the UI.
 * Saucers will explode if they collide with the player. According to the [reference I used](https://www.echalk.co.uk/amusements/Games/asteroidsClassic/ateroids.html), this behaviour is not intended.
