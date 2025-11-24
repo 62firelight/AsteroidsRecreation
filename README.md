@@ -4,6 +4,8 @@ This Unity project is a recreation of the arcade classic Asteroids in the Unity 
 
 It is not intended to be 1-to-1 recreation. This is more of an exercise to practice my own Unity skills than anything else.
 
+Currently playable at [this link](https://ijakenorton.github.io/miniclip/).
+
 ## Controls
 
 * **W / Up Arrow** - Thrust
